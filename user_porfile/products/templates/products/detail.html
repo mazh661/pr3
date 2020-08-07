@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>name: {{product.name}}</p>
+    <p>desc: {{product.desc}}</p>
+    <p>price: {{product.price}}</p>
+    <p>count: {{product.count}}</p>
+    {%if request.user.is_authenticated%}
+    <form method="POST" action="{%url 'order'%}">
+        {%csrf_token%}
+        <input type="hidden" name="product_id" value="{{product.pk}}">
+        <input type="text" name="count">
+        <input type="submit" value="Заказать">
+        
+    </form>
+    <a href="{%url 'credit' product_id=product.pk%}">Взять в кредит</a>
+    {%else%}
+        <a href="{%url 'login_page'%}">Авторизоваться</a>
+    {%endif%}
+</body>
+</html>

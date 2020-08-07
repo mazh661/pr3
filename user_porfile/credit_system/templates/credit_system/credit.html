@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Credit List</h2>
+    {%for i in credit_category%}
+    
+    <div>
+        {{i.name}}<br>
+        {{i.persent_per_year}}<br>
+        {{i.number_of_month}}<br>
+        <a href="{%url 'credit_action' product_id=product_id  credit_category_id=i.pk%}">Оформить кредит</a>
+    </div>
+    {%endfor%}
+</body>
+</html>
